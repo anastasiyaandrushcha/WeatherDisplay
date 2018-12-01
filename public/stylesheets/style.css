@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+#cityD {
+  padding: 5px;
+}
+#countryD {
+  padding: 5px;
+}

@@ -2,6 +2,7 @@ extends layout
 
 block content
     div 
+        p The current weather for #{city} is: 
         each source in sources
             h2 #{source.source}
             p #{source.conditions} #{source.temp}

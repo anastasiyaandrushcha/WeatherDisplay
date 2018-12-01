@@ -9,6 +9,14 @@ router.get('/weather', function(req, res){
   let city = req.query.city;
   let country = req.query.country;
 
+  if(city == "" || country == ""){ 
+    let error = {
+      status: '204',
+      stack:"Please go back and enter valid city and country names"
+    };
+    let message = "Missing values";
+    return res.render('error', {message:message, error:error});
+  }
   let sources = [
     {
       "source":"Not Found",
@@ -17,11 +25,12 @@ router.get('/weather', function(req, res){
     }
   ];
   weather.getWeather(city, country, function(err, result){
+    let displayCity = city + "," + country;
     if(err){
       console.log(err);
       return res.render('weather', { sources: sources });
     } else {
-      return res.render('weather', { sources: result });
+      return res.render('weather', { sources: result, city: displayCity });
     }    
   });
 });

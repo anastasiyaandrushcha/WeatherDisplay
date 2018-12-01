@@ -5,9 +5,12 @@ block content
   p Today's Weather
   form(method='GET' action='/weather')
           div.form-group
-            label(for='city') City:
-            input#city.form-control(type='text', placeholder='Ottawa' name='city')
+            div#cityD
+              label(for='city') City: <br />
+              input#city.form-control(type='text', value='Ottawa' name='city')
 
-            label(for='country') Country:
-            input#country.form-control(type='text', placeholder='Canada' name='country')
-            button.btn.btn-primary(type='submit') Get Weather
+            div#countryD
+              label(for='country') Country: <br />
+              input#country.form-control(type='text', value='Canada' name='country') 
+            p
+              button.btn.btn-primary(type='submit') Get Weather

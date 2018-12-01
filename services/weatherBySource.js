@@ -34,7 +34,11 @@ module.exports = {
                 let queryParams = city + " " + country;
                 request.get(api["accuweather"].metadataLink + api["accuweather"].apiKey + "&q=" + queryParams, (err, response, body)=>{
                     if(err){
-                        callback(err);
+                        var error = {
+                            "source":"accuweather",
+                            "message":err.message
+                        }
+                        callback(error);
                     } else if(JSON.parse(body)["Code"] && JSON.parse(body)["Code"] == "ServiceUnavailable"){
                         var error = {
                             "source":"accuweather",
@@ -51,7 +55,11 @@ module.exports = {
             function(locatiionId, callback) {
                 request.get(api["accuweather"]["api"]+locatiionId+"?apikey="+api["accuweather"].apiKey, (err, response, body)=>{
                     if(err){
-                        callback(err);
+                        var error = {
+                            "source":"accuweather",
+                            "message":err.message
+                        }
+                        callback(error);
                     } else {
                         let parsedData = JSON.parse(body)[0];
                         let relevantInfo = {
@@ -73,13 +81,18 @@ module.exports = {
         });
     },
     //@yahoo
+    //https://developer.yahoo.com/weather/#js
     yahoo: function(city, country, callback){
         let link = api["yahoo"]["api"].replace("CITY", city + ","+country);
 
         request.get(link, apiResponse);
         function apiResponse(err, response, body){
             if(err){
-                callback(err);
+                var error = {
+                    "source":"accuweather",
+                    "message":err.message
+                }
+                callback(error);
             } else {
                 let parsedData = JSON.parse(body)["query"]["results"]["channel"]["item"]["condition"];
                 let relevantInfo = {
@@ -102,7 +115,6 @@ module.exports = {
                 callback(err);
             } else {
                 var parsedData = JSON.parse(body);
-                console.log("Open Weather Parsed Data: " + JSON.stringify(parsedData["weather"]));
                 var relevantInfo = {
                     "source":"openweather",
                     "temp": parsedData["main"]["temp"] + "C",
