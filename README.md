@@ -12,22 +12,22 @@ https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubunt
 <h2>Running the application locally</h2>
 
 <p>
-1. Clone this application </br>
+1. Clone this application <br />
 git clone https://github.com/anastasiyaandrushcha/WeatherDisplay.git
 </p>
 
 <p>
-2. Using the command prompt, cd into WeatherDisplay and run npm install
+2. Using the command prompt, cd into WeatherDisplay and run npm install <br />
 npm install
 </p>
 
 <p>
-3. Launch using node
+3. Launch using node <br />
 node bin/www 
 </p>
 
 <p>
-4. Visit app to get the current weather for the city of choice
+4. Visit app to get the current weather for the city of choice <br />
 localhost:3000
 </p>
 
