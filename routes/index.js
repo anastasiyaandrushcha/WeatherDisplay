@@ -3,7 +3,7 @@ var router = express.Router();
 var weather = require("../services/weatherBySource");
 /* GET home page. */
 router.get('/', function(req, res) {
- return  res.render('index', { title: "Hello World!" });
+ return  res.render('index', { title: "Weather" });
 });
 router.get('/weather', function(req, res){    
   let city = req.query.city;
