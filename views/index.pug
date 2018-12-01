@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  'Enter the name of the city whose weather you wish to see
+  form(method='GET' action='/weather')
+          div.form-group
+            label(for='city') City:
+            input#city.form-control(type='text', placeholder='Ottawa' name='city')
+
+            label(for='country') Country:
+            input#country.form-control(type='text', placeholder='Canada' name='country')
+            button.btn.btn-primary(type='submit') Get Weather

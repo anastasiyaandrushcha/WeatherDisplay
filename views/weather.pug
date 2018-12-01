@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    div 
+        each source in sources
+            h2 #{source.source}
+            p #{source.conditions} #{source.temp}
